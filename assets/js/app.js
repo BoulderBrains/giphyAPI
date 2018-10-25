@@ -1,15 +1,9 @@
-// Step One:
-// Need to take value out of search-form input and 
-// create a button with the search term as the text within 
-// the newly created button. 
-// populate button in the #generated-button-container
-
-// Storing the artist name
 function createButton() {
 	var search = $("#search-input").val().trim();
 	var searchButton = $("<button>");
-	searchButton.addClass("btn btn-secondary");
+	searchButton.addClass("btn btn-secondary search-button");
 	searchButton.text(search);
+	$("#search-input").val("");
 	$("#generated-button-container").append(searchButton);
 }
 

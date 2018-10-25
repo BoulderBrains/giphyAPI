@@ -4,6 +4,22 @@
 // the newly created button. 
 // populate button in the #generated-button-container
 
+// Storing the artist name
+function createButton() {
+	var search = $("#search-input").val().trim();
+	var searchButton = $("<button>");
+	searchButton.addClass("btn btn-secondary");
+	searchButton.text(search);
+	$("#generated-button-container").append(searchButton);
+}
+
+$("#search-submit").on("click", function(event) {
+	event.preventDefault();
+	createButton();
+});
+
+
+
 // Step Two:
 // On click of the generatedButton, take the value of button
 // and pass that as a search term to the giphy API. 

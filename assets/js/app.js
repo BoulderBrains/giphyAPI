@@ -8,27 +8,28 @@ function createButton() {
 	$("#generated-button-container").append(searchButton);
 }
 
-$("#search-submit").on("click", function(event) {
+$("#search-submit").on("click", function (event) {
 	event.preventDefault();
 	createButton();
 });
 
+function showMeGifs() {
+	event.preventDefault();
 
+	var searchTerm = $(this).attr("data-name");
+	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=lG9ckorGrueBoeXQXp16qJ66xivTGyd1&limit=5";
+	
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).then(function (response) {
+		console.log(response);
+		// $("#results-container").text(JSON.stringify(response));
+	});
+};
 
-// Step Two:
-// On click of the generatedButton, take the value of button
-// and pass that as a search term to the giphy API. 
-// Get the first ten results and create an img tag and place the returned
-// result into those container.
-// populate entire constructed container of results to #results-container
-
-// See what other info I can pull of each returned result, and display that
-// in the returned result
-
-// On click of the gif, play the gif
-
-// Before You Begin
-
+// on click of the generated button, run the showMeGifs function
+$(document).on("click", ".search-button", showMeGifs);
 
 // -----------------------------
 // Assignment instructions

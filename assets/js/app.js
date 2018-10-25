@@ -12,10 +12,11 @@ function createButton() {
 	$("#generated-button-container").append(searchButton);
 }
 
+var giphyKey = config.giphyAPIKey;
+
 function showMeGifs() {
 	event.preventDefault();
 	var searchTerm = $(this).attr("data-name");
-	var giphyKey = config.giphyAPIKey;
 	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + giphyKey + "&limit=10";
 	
 	$.ajax({

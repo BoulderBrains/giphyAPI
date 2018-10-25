@@ -1,4 +1,8 @@
+// on click of the submit button, create a new button with search value
+$("#search-submit").on("click", createButton);
+
 function createButton() {
+	event.preventDefault();
 	var search = $("#search-input").val().trim();
 	var searchButton = $("<button>");
 	searchButton.attr("data-name", search);
@@ -8,27 +12,23 @@ function createButton() {
 	$("#generated-button-container").append(searchButton);
 }
 
-$("#search-submit").on("click", function (event) {
-	event.preventDefault();
-	createButton();
-});
-
 function showMeGifs() {
 	event.preventDefault();
-
 	var searchTerm = $(this).attr("data-name");
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=lG9ckorGrueBoeXQXp16qJ66xivTGyd1&limit=5";
+	var giphyKey = config.giphyAPIKey;
+	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + giphyKey + "&limit=10";
 	
 	$.ajax({
 		url: queryURL,
 		method: "GET"
-	}).then(function (response) {
+	}).then(function(response) {
 		console.log(response);
 		// $("#results-container").text(JSON.stringify(response));
 	});
 };
 
-// on click of the generated button, run the showMeGifs function
+// Listening to the document for newly generated button, 
+// on click run the showMeGifs function
 $(document).on("click", ".search-button", showMeGifs);
 
 // -----------------------------

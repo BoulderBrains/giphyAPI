@@ -12,19 +12,29 @@ function createButton() {
 	$("#generated-button-container").append(searchButton);
 }
 
-var giphyKey = config.giphyAPIKey;
-
 function showMeGifs() {
 	event.preventDefault();
 	var searchTerm = $(this).attr("data-name");
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + giphyKey + "&limit=10";
+	var giphyKey = config.giphyAPIKey;
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + giphyKey + "&limit=10";
 	
 	$.ajax({
 		url: queryURL,
 		method: "GET"
 	}).then(function(response) {
-		console.log(response);
-		// $("#results-container").text(JSON.stringify(response));
+		for (var i = 0; i < response.data.length; i++) {
+			// pulling out the items I want to use from the API
+			var rating = response.data[i].rating;
+			var imgURL = response.data[i].images.downsized.url;
+			// forming an element for the return item
+			var wrapper = $("<div class='col-sm-3'>");
+			var ratingElement = $("<p>").text("Rating: " + rating);
+			var image = $("<img class='returned-image'>").attr("src", imgURL);
+			// adding the ratingElement paragraph and the image img to the wrapper
+			wrapper.append(ratingElement, image);
+			// rendering the wrapper to the #results-container
+			$("#results-container").prepend(wrapper);
+		}
 	});
 };
 

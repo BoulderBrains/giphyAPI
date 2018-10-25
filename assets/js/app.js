@@ -27,7 +27,7 @@ function showMeGifs() {
 			var rating = response.data[i].rating;
 			var imgURL = response.data[i].images.downsized.url;
 			// forming an element for the return item
-			var wrapper = $("<div class='col-lg-6 col-sm-4 wrapper'>");
+			var wrapper = $("<div class='col-lg-4 col-sm-6 wrapper'>");
 			var ratingElement = $("<p>").text("Rating: " + rating);
 			var image = $("<img class='returned-image'>").attr("src", imgURL);
 			// adding the ratingElement paragraph and the image img to the wrapper

@@ -1,3 +1,14 @@
+#page-wrap {
+	margin: 20px auto;
+	display: flex;
+}
+
+#generated-button-container {
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
 .search-button {
 	margin: 20px 15px;
 }
+

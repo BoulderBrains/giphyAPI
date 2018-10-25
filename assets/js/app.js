@@ -1,6 +1,7 @@
 function createButton() {
 	var search = $("#search-input").val().trim();
 	var searchButton = $("<button>");
+	searchButton.attr("data-name", search);
 	searchButton.addClass("btn btn-secondary search-button");
 	searchButton.text(search);
 	$("#search-input").val("");

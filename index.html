@@ -20,18 +20,19 @@
 	<title>giphyAPI</title>
 </head>
 <body>
+	<div id="page-wrap" class="col-sm-12">
+		<form id="search-form" class="col-sm-3">
+			<div class="form-group">
+				<label for="search-input"></label>
+				<input id="search-input" class="form-control">
+			</div>
+			<button id="search-submit" class="btn btn-primary">Submit</button>
+		</form>
 
-	<div id="generated-button-container"></div>
-	
-	<form id="search-form" class="col-sm-3">
-		<div class="form-group">
-			<label for="search-input"></label>
-			<input id="search-input" class="form-control">
-		</div>
-		<button id="search-submit" class="btn btn-primary">Submit</button>
-	</form>
+		<span id="generated-button-container" class="col-sm-9"></span>
 
-	<div id="results-container"></div>
+		<div id="results-container"></div>
+	</div>
 
 	<!-- My JS file include -->
 	<script src="assets/js/app.js"></script>

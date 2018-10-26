@@ -1,10 +1,12 @@
 // Preset array that's turned into buttons on page load
-var loadArray = ['quilts', 'needles', 'yarn', 'sewing machine', 'badding', 'tape', 'cutter', 'ruler', 'marker', 'bobbin', 'embroidery'];
+var loadArray = ['Wheels', 'Spokes', 'pedals', 'clipless shoes', 'cycle cross',
+'fixed gear', 'road bike', 'aero', 'gels', 'hydrate', 'chain'];
 
-// createButtons loops through the loadArray to create a button with classes and attributes for every array item and appending it to the page
+// createButtons loops through the loadArray to create a button with classes and
+// attributes for every array item and appending it to the page
 function createButtons() {
 	$("#generated-button-container").empty();
-	
+
 	for (i = 0; i < loadArray.length; i++) {
 		var searchValue = loadArray[i];
 		var searchButton = $("<button>");
@@ -24,17 +26,32 @@ $("#search-submit").on("click", AddButton);
 function AddButton() {
 	event.preventDefault();
 	var search = $("#search-input").val().trim();
-	loadArray.push(search);
-	$("#search-input").val("");
-	createButtons();
+
+	// Prevent empty buttons from being created
+	if (search === "") {
+		alert("You have to enter a search term to create a button");
+	}
+	// Prevent duplicate buttons from being created by checking if the search
+	// term is already in the loadArray
+	else if ($.inArray(search, loadArray) !== 0) {
+		$("#search-input").val("");
+		alert("You already have a button with that search term");
+		// Flash the button with the .text(search)
+	} else {
+		loadArray.push(search);
+		$("#search-input").val("");
+		createButtons();
+	}
 }
 
-// Takes the data-name off the button, searches the giphy API and prepends 10 results to the page
+// Takes the data-name off the button, searches the giphy API and prepends
+// 10 results to the page
 function showMeGifs() {
 	event.preventDefault();
 	var searchTerm = $(this).attr("data-name");
 	var giphyKey = config.giphyAPIKey;
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=" + giphyKey + "&limit=10";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm +
+	 "&api_key=" + giphyKey + "&limit=10";
 
 	$.ajax({
 		url: queryURL,
@@ -54,7 +71,7 @@ function showMeGifs() {
 			image.attr("data-still", stillURL);
 			image.attr("data-animate", animateURL);
 			image.attr("data-state", "still");
-		
+
 			// adding the ratingElement paragraph and the image img to the wrapper
 			wrapper.append(image, ratingElement);
 			// rendering the wrapper to the #results-container
@@ -68,7 +85,7 @@ function gifStartStop() {
 	var state = $(this).attr("data-state");
 	var dataStill = $(this).attr("data-still");
 	var dataAnimate = $(this).attr("data-animate");
-	
+
 	if (state === "still") {
 		$(this).attr("src", dataAnimate);
 		$(this).attr("data-state", "animate");
@@ -82,13 +99,6 @@ function gifStartStop() {
 $(document).on("click", ".search-button", showMeGifs);
 // listeing to clicks on the returned images to trigger gifState and start/stop the gif
 $(document).on("click", ".returned-image", gifStartStop);
-
-
-
-
-
-
-// 6. Add a form to your page takes the value from a user input box and adds it into your `topics` array. Then make a function call that takes each topic in the array remakes the buttons on the page.
 
 
 

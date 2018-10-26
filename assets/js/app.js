@@ -19,17 +19,14 @@ function createButtons() {
 createButtons();
 
 // on click of the submit button, create a new button with search value
-$("#search-submit").on("click", generateNewButton);
+$("#search-submit").on("click", AddButton);
 
-function generateNewButton() {
+function AddButton() {
 	event.preventDefault();
 	var search = $("#search-input").val().trim();
-	var generatedButton = $("<button>");
-	generatedButton.attr("data-name", search);
-	generatedButton.addClass("btn btn-secondary search-button");
-	generatedButton.text(search);
+	loadArray.push(search);
 	$("#search-input").val("");
-	$("#generated-button-container").append(generatedButton);
+	createButtons();
 }
 
 // Takes the data-name off the button, searches the giphy API and prepends 10 results to the page

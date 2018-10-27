@@ -1,6 +1,6 @@
 // Preset array that's turned into buttons on page load
 var loadArray = ['record', 'tape', 'cd', '8-track', 'walkman',
-'napster', 'VHS', 'blue-ray', '8-track', 'spotify', 'winamp'];
+'napster', 'vhs', 'blue-ray', 'spotify', 'winamp'];
 
 // createButtons loops through the loadArray to create a button with classes and
 // attributes for every array item and appending it to the page

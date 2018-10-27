@@ -49,7 +49,7 @@ function AddButton() {
 function showMeGifs() {
 	event.preventDefault();
 	var searchTerm = $(this).attr("data-name");
-	var giphyKey = config.giphyAPIKey;
+	var giphyKey = "lG9ckorGrueBoeXQXp16qJ66xivTGyd1";
 	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm +
 	 "&api_key=" + giphyKey + "&limit=10";
 

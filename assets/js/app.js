@@ -33,15 +33,28 @@ function AddButton() {
 	}
 	// Prevent duplicate buttons from being created by checking if the search
 	// term is already in the loadArray
-	else if ($.inArray(search, loadArray) !== 0) {
+	else if (loadArray.includes(search)) {
 		$("#search-input").val("");
-		alert("You already have a button with that search term");
-		// Flash the button with the .text(search)
+		// alert("You already have a button with that search term");
+		// animate existing button
+		shakeExistingButton(search);
 	} else {
 		loadArray.push(search);
 		$("#search-input").val("");
 		createButtons();
 	}
+}
+
+function shakeExistingButton(search) {
+	// setting animate values on the duplicate button
+	$("[data-name=" + search + "]").css("animation", "shake 0.5s");
+	$("[data-name=" + search + "]").css("animation-iteration-count", "1");
+	// waiting a 1/2 and then removing one of the properties
+	// This in incase the user trys to enter the same text again, animation is 
+	// only triggered a second time if animation css is removed so it can be reset next time
+	setTimeout(function(){ 
+		$("[data-name=" + search + "]").css("animation", "");
+	}, 500);
 }
 
 // Takes the data-name off the button, searches the giphy API and prepends
@@ -102,12 +115,7 @@ $(document).on("click", ".returned-image", gifStartStop);
 
 
 
-// ### Bonus Goals
 
-// 1. Ensure your app is fully mobile responsive.
-
-// 2. Allow users to request additional gifs to be added to the page.
-//    * Each request should ADD 10 gifs to the page, NOT overwrite the existing gifs.
 
 // 3. List additional metadata (title, tags, etc) for each gif in a clean and readable format.
 

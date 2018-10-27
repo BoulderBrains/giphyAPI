@@ -25,7 +25,8 @@ $("#search-submit").on("click", AddButton);
 
 function AddButton() {
 	event.preventDefault();
-	var search = $("#search-input").val().trim();
+	var search = $("#search-input").val().trim().toLowerCase();
+	console.log(search);
 
 	// Prevent empty buttons from being created
 	if (search === "") {

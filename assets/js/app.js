@@ -1,6 +1,6 @@
 // Preset array that's turned into buttons on page load
-var loadArray = ['Wheels', 'Spokes', 'pedals', 'clipless shoes', 'cycle cross',
-'fixed gear', 'road bike', 'aero', 'gels', 'hydrate', 'chain'];
+var loadArray = ['record', 'tape', 'cd', '8-track', 'walkman',
+'napster', 'VHS', 'blue-ray', '8-track', 'spotify', 'winamp'];
 
 // createButtons loops through the loadArray to create a button with classes and
 // attributes for every array item and appending it to the page
@@ -35,7 +35,6 @@ function AddButton() {
 	// term is already in the loadArray
 	else if (loadArray.includes(search)) {
 		$("#search-input").val("");
-		// alert("You already have a button with that search term");
 		// animate existing button
 		shakeExistingButton(search);
 	} else {
@@ -112,25 +111,3 @@ function gifStartStop() {
 $(document).on("click", ".search-button", showMeGifs);
 // listeing to clicks on the returned images to trigger gifState and start/stop the gif
 $(document).on("click", ".returned-image", gifStartStop);
-
-
-
-
-
-// 3. List additional metadata (title, tags, etc) for each gif in a clean and readable format.
-
-// 4. Include a 1-click download button for each gif, this should work across device types.
-
-// 5. Integrate this search with additional APIs such as OMDB, or Bands in Town. Be creative and build something you are proud to showcase in your portfolio
-
-// 6. Allow users to add their favorite gifs to a `favorites` section.
-//    * This should persist even when they select or add a new topic.
-//    * If you are looking for a major challenge, look into making this section persist even when the page is reloaded(via localStorage or cookies).
-
-// ### Reminder: Submission on BCS
-
-// * Please submit both the deployed Github.io link to your homework AND the link to the Github Repository!
-
-// // Add next steps to README.md file
-
-// // Add To Your Portfolio
